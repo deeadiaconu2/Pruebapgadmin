@@ -1,1 +1,23 @@
+services:
+  - type: web
+    name: pgadmin
+    env: docker
+    plan: free
+    autoDeploy: true
+
+    repo: # opcional en el futuro, Render detecta repo al crear servicio desde UI
+      # leave empty when creating from Render UI
+
+    envVars:
+      - key: PGADMIN_DEFAULT_EMAIL
+        value: admin@example.com      # CAMBIA esto por tu email
+      - key: PGADMIN_DEFAULT_PASSWORD
+        value: supersecret            # CAMBIA por una contraseña segura
+      - key: PGADMIN_LISTEN_ADDRESS
+        value: "0.0.0.0"              # importante: escuchar en todas las interfaces
+
+    disk:
+      name: pgadmin-data
+      mountPath: /var/lib/pgadmin
+      sizeGB: 1
 
